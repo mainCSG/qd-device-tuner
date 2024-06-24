@@ -6,9 +6,9 @@ class Drain(Ohmic):
                  source: int,
                  scale: float,
                  offset: float,
-                 unit: str,
-                 bounds: tuple | float | int) -> None:
+                 unit: str = None,
+                 bounds: tuple | float | int = None) -> None:
         super().__init__(name, source, scale, offset, unit, bounds)
 
     def get_current(self) -> float:
-        pass
+        return float(self.source() - self.offset) * self.scale
